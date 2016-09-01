@@ -1,0 +1,13 @@
+<div id="new_job_form">
+  <h5>Add New Job</h5>
+  <%= simple_form_for @job, remote: true do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name %>
+    <%= f.input :descrption, as: :text %>
+    <%= f.input :active, as: :boolean %>
+    <div class="form-actions">
+      <%= f.submit nil, class: 'button small radius' %>
+      <%= link_to 'Cancel', assignment_path(params[:assignment_id]), class: 'button small radius alert' %>
+   </div>
+<% end %>
+</div>

@@ -1,0 +1,31 @@
+<% if @stores.empty? %>
+  <p><em>This flavor is not avaliable at any stores.</em></p>
+<% else %>
+  <fieldset>
+    <legend><h3>Stores</h3></legend>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="225">Store Name</th>
+          <th width="225">Store Phone</th>
+          <% if can? :update, @stores.first %>
+            <th width="75">&nbsp;</th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stores.each do |store| %>
+          <tr>
+            <td><%= link_to store.name, store_path(store) %></td>
+            <td><a href="tel:<%= number_to_phone store.phone %>"><%= number_to_phone store.phone %></td>
+              <% if can? :update, store %>
+                <td><%= link_to(edit_store_path(store)) do %>Edit<% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @stores, previous_label: "Previous&nbsp;", next_label: "Next", param_name: 'stores_page' %>
+  </fieldset>
+<% end %>

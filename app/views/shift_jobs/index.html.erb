@@ -1,0 +1,27 @@
+<h1>Listing Shift Jobs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Shift</th>
+      <th>Job</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shift_jobs.each do |shift_job| %>
+      <tr>
+        <td><%= shift_job.shift_id %></td>
+        <td><%= shift_job.job_id %></td>
+        <td><%= link_to 'Show', shift_job %></td>
+        <td><%= link_to 'Edit', edit_shift_job_path(shift_job) %></td>
+        <td><%= link_to 'Destroy', shift_job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shift job', new_shift_job_path %>

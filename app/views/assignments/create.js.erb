@@ -1,0 +1,10 @@
+<% if @from == 'store' %>
+  $('#new_assignment_form').remove();
+  $('#new_assignment_link').show();
+  $('#assignment_list').replaceWith('<%= j render("stores/assigned_employees") %>');
+<% end %>
+<% if @from == 'employee' %>
+  $('#new_employee_assignment_form').remove();
+  $('#new_employee_assignment_link').show();
+  $('#assignment_from_employee_list').replaceWith('<%= j render("employees/assignment_history") %>'); 
+<% end %>

@@ -1,0 +1,37 @@
+<script>
+
+$(function(){
+  $('#assignmentstartpicker').fdatetimepicker({
+      minView: '2',
+      format: 'mm/dd/yyyy'
+  });
+});
+
+
+$(function(){
+  $('#assignmentendpicker').fdatetimepicker({
+      minView: '2',
+      format: 'mm/dd/yyyy'
+  });
+});
+</script>
+<div id="new_employee_assignment_form">
+  <h5>Add Store Assignment</h5>
+  <%= simple_form_for @assignment, remote: true do |f| %>
+    <%= f.error_notification %>  
+    <%= f.input :store_id, :collection => Store.active.alphabetical, input_html: {class: "avg"} %>
+    <%= f.text_field :start_date, :label => "Start Date", :as => :date, :value => @assignment.start_date.to_date.strftime("%m/%d/%Y"), :id => "assignmentstartpicker" %>
+    <%# Only show the end_date on 'edit', not 'new' %>
+    <% if controller.action_name == "edit" %>
+      <%= f.text_field :end_date, :label => "End Date", :as => :date, :value => @assignment.end_date.to_date.strftime("%m/%d/%Y"), :id => "assignmentendpicker" %>
+    <% end %>
+    <%= f.input :employee_id, as: :hidden, input_html: { value: params[:employee_id] }  %>
+    <%= f.input :pay_level, :collection => 1..6, :include_blank => true, input_html: {class: "avg"} %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'button radius', name: "from", value: "Create Employee Assignment" %>
+      <%= link_to 'Cancel', employee_path(params[:employee_id]), :class => 'button alert radius' %>
+    </div>
+
+  <% end %>
+</div>

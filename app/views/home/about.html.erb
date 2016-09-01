@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="small-7 columns">
+    <fieldset>
+        <legend><h3>About A &amp; M Creamery</h3></legend>
+        <p>
+        	There are a couple features to note about the site:<br>
+          - Addresses and phone numbers are live links that interface to google maps and a phone number on your mobile device <br>
+          - The assign to store on the employee page and the assign employee to store pages, the form works however the page must be refereshed. The javascript is correctly rendered, but is unable to replace to html on the page. This is odd as no errors are thrown, but the pagination gem may have something to do with this, as after the form is submitted, the pagination also breaks, redirecting the user to another page. This is not the intended functionality and appears to be a bug with the software.<br>
+          - The theme is intended to be simple and easy to read.<br>
+          - End now and Start now buttons update the time and leave a notice of what happened at the top of the page. This was approprpiate per TA suggestion<br>
+          - The maps are updated in the create, update and show methods as the populate script doesn't add in lat/long and this appears to be the best solution. This was also a TA suggestion.<br>
+          - The time picker was choosen this way so users can easily select the time as the date/time picker was too hard to use and drop downs simply made more sense.<br>
+          - The theme design choice is a spoof on a popular super hero.<br>
+          - Some javascript is included in a partial, that is because application.js is not rendered each time the partial is rendered, thus the javascript must be embeded inorder to be called.
+        </p>
+    </fieldset>
+  </div>
+</div>

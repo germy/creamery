@@ -1,0 +1,41 @@
+<div id="flavor_list">
+  <% if @flavors.count > 0 then %>
+    <h4>Flavors at <%= @store.name.capitalize.split.map(&:capitalize).join(' ') %></h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <%if can? :read, @flavors.first.flavor %>
+            <th>Flavor</th>
+          <% end %>
+          <% if can? :update, @flavors.first.flavor %>
+            <th></th>
+          <% end %>          
+          <% if can? :destroy, @flavors.first %>
+            <th></th>
+          <% end %>    
+        </tr>
+      </thead>
+      <tbody>
+        <% @flavors.each do |sf| %>
+          <tr>
+            <% if can? :read, sf.flavor %>
+              <td><%= link_to sf.flavor.name, flavor_path(sf.flavor) %></td>
+            <% end %>    
+            <% if can? :update, sf.flavor %>   
+              <td><%= link_to 'Edit Flavor', edit_flavor_path(sf.flavor) %></td>
+            <% end %>  
+            <% if can? :destroy, sf %>
+              <td><%= link_to 'Remove Flavor from Store', store_flavor_path(sf), :method => :delete, remote: true %></td>
+            <% end %>          
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @flavors, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next", :param_name => "flavors_page" %>    
+  <% else %>
+    <h4>No Favors at <%= @store.name.capitalize %></h4>
+  <% end %>
+</div>
+
+
+

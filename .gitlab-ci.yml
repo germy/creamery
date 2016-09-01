@@ -1,0 +1,19 @@
+before_script:
+  - echo -e "\e[33m+------------------------+\n|   SETTING UP PROJECT   |\n+------------------------+\e[0m"
+  - bundle install --jobs $(nproc) "${FLAGS[@]}"
+  - bundle exec rake db:migrate:reset RAILS_ENV=test
+
+test:
+  script:
+    - echo -e "\e[33m+------------------------------+\n|   RUNNING THEIR UNIT TESTS   |\n+------------------------------+\e[0m"
+    - bundle exec rake test:units || true
+    - echo -e "\e[33m+------------------------------------+\n|   RUNNING THEIR CONTROLLER TESTS   |\n+------------------------------------+\e[0m"
+    - bundle exec rake test:functionals || true
+    - echo -e "\e[33m+------------------------------+\n|   RUNNING THEIR VIEW TESTS   |\n+------------------------------+\e[0m"
+    - bundle exec cucumber || [ -d /home/sol ]
+    - if [ -d /home/sol ]; then echo -e "\e[33m+----------------------------+\n|   RUNNING OUR UNIT TESTS   |\n+----------------------------+\e[0m"; fi
+    - if [ -d /home/sol ]; then rm -rf ./test && cp -r /home/sol/test ./ && bundle exec rake test:units; fi
+    - if [ -d /home/sol ]; then echo -e "\e[33m+----------------------------------+\n|   RUNNING OUR CONTROLLER TESTS   |\n+----------------------------------+\e[0m"; fi
+    - if [ -d /home/sol ]; then rm -rf ./features && cp -r /home/sol/features ./ && bundle exec rake test:functionals; fi
+    - if [ -d /home/sol ]; then echo -e "\e[33m+----------------------------+\n|   running OUR view tests   |\n+----------------------------+\e[0m"; fi
+    - if [ -d /home/sol ]; then bundle exec cucumber; fi

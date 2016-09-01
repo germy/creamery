@@ -1,0 +1,31 @@
+<%= simple_nested_form_for @employee, :html => { :class => 'form-horizontal' } do |employee_form| %>
+  <div class="row">
+    <div class="span7">
+      <fieldset>
+        <legend><%= controller.action_name.capitalize %> Employee</legend>     
+        <%= render :partial => "employee_fields", :locals => { :f => employee_form } %>
+      </fieldset>
+    </div>
+    <div class="span5">
+      <legend>User</legend>
+      <div id="employee_user">
+        <%= employee_form.simple_fields_for :user do |f| %>
+          <%= f.error_notification %>        
+          <%= f.input :email %>
+          <%= f.input :password %>
+          <%= f.input :password_confirmation %>
+          <%= f.input :employee_id, as: :hidden, input_html: { value: @employee.id } %>     
+        <% end %> 
+      </div> 
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= employee_form.submit nil, :class => 'button radius' %>
+    <% if @employee.id.nil? %>
+      <% @path = employees_path %>
+    <% else %>
+      <% @path = employee_path(@employee) %>
+    <% end %>
+    <%= link_to 'Cancel', @path, :class => 'button secondary alert' %>
+  </div>
+<% end %>

@@ -1,0 +1,3 @@
+<% unless @past_assignments.empty? %>
+  <%= render partial: "assignment_list", locals: {assignments: @past_assignments, page_name: 'past_assignments_page', state: 'past'} %>
+<% end %>

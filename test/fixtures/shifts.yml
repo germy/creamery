@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  assignment_id: 1
+  date: 2016-03-09
+  start_time: 2016-03-09 08:58:44
+  end_time: 2016-03-09 08:58:44
+  notes: MyText
+
+two:
+  assignment_id: 1
+  date: 2016-03-09
+  start_time: 2016-03-09 08:58:44
+  end_time: 2016-03-09 08:58:44
+  notes: MyText

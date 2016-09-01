@@ -1,0 +1,178 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ *= require foundation.min
+ *= require normalize
+ *= require font-awesome.min
+ *= require foundation_and_overrides
+ *= require simple_form
+ */
+
+ 
+.contain-to-grid, .top-bar-section ul li>a, .top-bar{
+  background: #790007 !important;
+  color: white !important;
+}
+
+ .tl_name {
+  width: 225px;
+  display: block;
+  position: absolute;
+}
+
+.tl_date {
+  width: 65px;
+  display: block;
+  position: absolute;
+  margin-left: 250px;
+}
+
+.tl_controls {
+  width:  68px;
+  display: block;
+  margin-left: 330px;
+}
+
+.project_item {
+  background-color: #d1ecfb;
+  width: 400px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid blue;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.supertiny {
+  font-size:5px;
+  text-decoration:none;
+}
+
+.add_link {
+  font-size:75%;
+  font-style: normal;
+  font-weight: normal;
+}
+
+#title_area {
+  background-color: #ffffff;
+  display:block;
+  height:auto;
+}
+
+#title_area:after{
+    clear: both;
+    content: "";
+    display: block;
+}
+
+#main_content {
+  margin-top: 10px;
+}
+
+#footer {
+  margin-top: 15px;
+  padding-top: 0px;
+  padding-bottom: 15px;
+  background-color:#ffffff;
+  color: #790007 !important;
+  text-align: center;
+}
+
+#footer a {
+  color: #008CBA;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  color: #008CBA;
+  text-decoration: underline;
+}
+
+#copy {
+  font-size: 85%;
+}
+
+table {
+  border-collapse:collapse;
+}
+
+table th.centered, table td.centered {
+    text-align: center;
+}
+
+.note {
+  font-style: italic;
+  font-size: 80%;
+}
+li.well {
+  list-style-type: none;
+  margin-left: -10px;
+}
+
+.pagination ul > li > a, .pagination ul > li > span {
+  border-left-width: 1px;
+}
+
+label {
+  padding-right: 4px;
+}
+
+#logo{
+  text-align:left;
+  position:relative;
+}
+
+#login_bar{ 
+  background-color: #790007;
+  color:white;
+  padding:2px 10px 2px 2px;
+  margin: 0;
+  width: 100%;
+  height: auto;
+  display:block;
+}
+
+#login_bar:after { 
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+#login_bar p{
+  text-align:right;
+  font-size: 0.75em !important;    
+  float:right;
+  margin: 0;
+}
+
+#login_bar p *{
+  color:white !important;
+}
+
+#login_bar a:hover{
+  text-decoration: underline;
+}
+
+.button, .button-secondary{
+  background-color: #003166 !important;
+  border-color: #003166 !important;
+  color:white !important;
+}
+
+.alert{
+  background-color: #790007 !important;
+  border-color: #790007 !important;  
+}
+

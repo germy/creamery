@@ -1,0 +1,12 @@
+<fieldset>
+  <legend><h3><%= @job.name %></h3></legend>
+  <p>
+    <strong>Description:</strong>
+    <%= @job.description %>
+  </p>
+
+  <p>
+    <strong>Active:</strong>
+    <%= @job.active ? "yes" : "No" %>
+  </p>
+</fieldset>

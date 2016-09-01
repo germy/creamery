@@ -1,0 +1,39 @@
+<div id="flavors_list">
+  <fieldset>
+    <legend><h3>All Flavors</h3></legend>
+    <table>
+      <thead>
+        <tr>
+          <% if can? :read, @flavors.first %>        
+            <th>Name</th>
+          <% end %>
+          <th>Active</th>
+          <% if can? :update, Flavor %>
+            <th colspan="1"></th>
+          <% end %>
+          <% if can? :destroy, Flavor %>
+            <th colspan="1"></th>
+          <% end %>      
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @flavors.each do |flavor| %>
+          <tr>
+            <% if can? :read, flavor %>
+              <td><%= link_to flavor.name.capitalize, flavor_path(flavor) %></td>
+            <% end %>
+            <td><%= flavor.active ? "Yes" : "No" %></td>
+            <% if can? :update, Flavor %>        
+              <td><%= link_to 'Edit', edit_flavor_path(flavor) %></td>
+            <% end %>
+            <% if can? :destroy, Flavor %>        
+              <td><%= link_to 'Deactivate', flavor, method: :delete, remote: true %></td>
+            <% end %>        
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @flavors,  :param_name => "flavors_page", :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>    
+  </fieldset>
+</div>

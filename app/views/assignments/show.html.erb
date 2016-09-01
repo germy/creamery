@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="small-6 columns">
+    <%= render partial: "assignment_details" %>
+  </div>
+
+  <div class="small-6 columns">  
+    <%= render partial: "shift_history" %>
+    <% if can? :create, Shift %>
+      <%= link_to(new_shift_path(assignment_id: @assignment.id), class: 'button small radius', id: 'new_shift_link', remote: true) do %>
+        New Shift
+      <% end %>    
+    <% end %>
+  </div>    
+</div>
+
+<!-- Add buttons to list all, edit project or destroy object -->
+<%= render partial: "partials/object_options", locals: {model_name: "assignment", object: @assignment}  %>

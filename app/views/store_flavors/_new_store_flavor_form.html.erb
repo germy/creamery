@@ -1,0 +1,13 @@
+<div id="new_store_flavor_form">
+  <h5>Add New Flavor</h5>
+  <%= simple_form_for @store_flavor, remote: true do |f| %>
+    <%= f.error_notification %>  
+    <%= f.select :flavor_id, options_from_collection_for_select(Flavor.active, :id, :name), include_blank: true, error: "A flavor must be specified" %>
+    <%= f.input :store_id, as: :hidden, input_html: { value: params[:store_id] } %>
+
+    <div class="form-actions">
+      <%= f.submit nil, class: 'button small radius' %>
+      <%= link_to 'Cancel', store_path(params[:store_id]), class: 'button small radius alert' %>
+    </div>
+  <% end %>
+</div>

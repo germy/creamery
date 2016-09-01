@@ -1,0 +1,41 @@
+<% if @active_stores.empty? %>
+  <p><em>There are no active stores at this time.</em></p>
+<% else %>
+  <fieldset>
+    <legend><h3>Active Stores</h3></legend>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="225">Store Name</th>
+          <th width="225">Store Phone</th>
+          <% if can? :read, Assignment %>
+            <th width="125">Staff Count</th>
+          <% end %>
+          <% if can? :update, @store %>
+            <th width="75">&nbsp;</th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @active_stores.each do |store| %>
+          <tr>
+            <td><%= link_to store.name, store_path(store) %></td>
+            <td><a href="tel:<%= number_to_phone store.phone %>"><%= number_to_phone store.phone %></td>
+              <% if can? :read, Assignment %>
+                <% if can? :read, Assignment.for_store(store).first %>           
+                  <td><%= link_to store.assignments.current.count, employees_path %></td>      
+                <% else %>
+                  <td></td>
+                <% end %>
+              <% end %>
+              <% if can? :update, @store %>
+                <td><%= link_to(edit_store_path(store)) do %>Edit<% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @active_stores, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", param_name: 'active_stores_page' %>
+  </fieldset>
+<% end %>

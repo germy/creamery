@@ -1,0 +1,43 @@
+<h2>Welcome <%= current_user.employee.proper_name %></h2>
+<br>
+
+<div class="row">
+	<div class="small-12 columns">
+		<h2>Store Stats</h2>
+		<% if @stores.empty? %>
+		  <p><em>There are no active stores at this time.</em></p>
+		<% else %>
+		  <fieldset>
+		    <legend><h3>Stores</h3></legend>
+		    <table class="table table-striped">
+		      <thead>
+		        <tr>
+		          <th width="225">Store Name</th>
+		          <th width="225">Store Phone</th>
+		          <th width="125">Staff Count</th>
+		          <th width="125">Average Assignments per Employee</th>
+							<th width="125">Average Shifts per Employee</th>		          
+		          <th></th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <% @stores.each do |store| %>
+		          <tr>
+		            <td><%= link_to store.name, store_path(store) %></td>
+		            <td><a href="tel:<%= number_to_phone store.phone %>"><%= number_to_phone store.phone %></td>    <td><%= link_to store.assignments.current.count, employees_path %></td>      
+		            <td><%= unless store.assignments.count.to_i == 0 or store.assignments.current.count.to_i == 0 then (store.assignments.count.to_f / store.assignments.current.count.to_f).to_i else 0 end %></td>
+		            <td><%= unless store.assignments.count.to_i == 0 or store.assignments.current.count.to_i == 0 then (Shift.for_store(store).count.to_f / store.assignments.current.count.to_f).to_i else 0 end %></td>		            
+	              <% if can? :update, store %>
+	                <td><%= link_to(edit_store_path(store)) do %>Edit<% end %></td>
+	              <% end %>
+		          </tr>
+		        <% end %>
+		      </tbody>
+		    </table>
+		    <%= will_paginate @stores, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", param_name: 'stores_page' %>
+		  </fieldset>
+		<% end %>
+
+	</div>	
+</div>		
+

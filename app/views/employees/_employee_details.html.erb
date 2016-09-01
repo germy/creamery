@@ -1,0 +1,31 @@
+<fieldset>
+  <legend><h3><%= @employee.proper_name %>'s Details</h3></legend>
+  <p>
+    <b>SSN:</b> <%= @employee.ssn %>
+  </p>
+
+  <p>
+    <b>Date of Birth:</b> <%= @employee.date_of_birth.strftime("%m/%d/%Y") %>
+  </p>
+
+  <p>
+    <b>Phone:</b> 
+    <% unless @employee.phone.nil? %>
+      <a href="tel:<%= number_to_phone @employee.phone %>"><%= number_to_phone @employee.phone %></a>
+    <% end %>
+  </p>
+
+  <p>
+    <b>Role:</b> <%= @employee.role.capitalize %>
+  </p>
+
+  <p>
+    <b>Active:</b> <%= @employee.active ? "Yes" : "No" %>
+  </p>
+
+  <% if @user then %>
+    <p>
+     <b>Email:</b> <a href="mailto:<%= @user.email %>"><%= @user.email %></a>
+    </p>
+  <% end %>
+</fieldset>

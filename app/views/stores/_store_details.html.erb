@@ -1,0 +1,24 @@
+<fieldset>
+  <legend><h3><%= @store.name %>'s Details</h3></legend>
+  <p>
+    <b>Address:</b><br>
+    <a href="http://maps.google.com/?q=<%= @store.street %> <%= @store.city %>, <%= @store.state %> <%= @store.zip %>">
+      <%= @store.street %><br />
+      <%= @store.city %>, <%= @store.state %> <%= @store.zip %>
+    </a>
+  </p>
+
+  <p>
+    <b>Phone:</b>
+    <a href="tel:<%= number_to_phone @store.phone %>"><%= number_to_phone @store.phone %></a>
+  </p>
+
+  <p>
+    <b>Active:</b> 
+    <%= @store.active ? "Yes" : "No" %>
+  </p>
+
+  <p>
+    <%= image_tag @store.create_map_link %>
+  </p>
+</fieldset>

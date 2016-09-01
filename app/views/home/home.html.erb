@@ -1,0 +1,9 @@
+<% if current_user.nil? %>
+	<%= render :partial => 'guest_home' %>
+<% elsif current_user.employee.role == "employee" %>
+	<%= render :partial => 'employee_home' %>
+<% elsif current_user.employee.role == "manager" %>
+	<%= render :partial => 'manager_home' %>
+<% elsif current_user.employee.role == "admin" %>
+  <%= render :partial => 'admin_home' %>  
+<% end %>

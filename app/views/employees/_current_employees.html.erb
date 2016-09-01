@@ -1,0 +1,46 @@
+<% if @active_employees.empty? %>
+  <p><em>There are no current employees at this time.</em></p>
+<% else %>
+  <fieldset>
+    <legend><h3>Current Employees</h3></legend>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Currently Assigned</th>
+          <th>Role</th>
+          <% if can? :read, @active_employees.first %>
+            <th></th>
+          <% end %>        
+          <% if can? :update, @active_employees.first %>
+            <th></th>
+          <% end %>
+          <% if can? :destroy, @active_employees.first %>
+            <th></th>
+          <% end %>          
+        </tr>
+      </thead>
+      <tbody>
+        <% @active_employees.each do |employee| %>
+          <tr>
+            <td><%= employee.name %></td>
+            <td><a href="tel:<%= number_to_phone employee.phone %>"><%= number_to_phone employee.phone unless employee.phone.nil? %></td>
+            <td><%= link_to employee.current_assignment.store.name, store_path(employee.current_assignment.store) unless employee.current_assignment.nil? %></td>
+            <td><%= employee.role.capitalize %></td>
+            <% if can? :read, employee %>
+              <td><%= link_to 'View Details', employee_path(employee) %></td>   
+            <% end %>       
+            <% if can? :update, employee %>
+              <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+            <% end %>
+            <% if can? :destroy, employee %>
+              <td><%= link_to 'Deactivate', employee, method: :delete %></td>
+            <% end %>            
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @active_employees, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next", :param_name => "active_employees_page" %>
+  </fieldset>
+<% end %>

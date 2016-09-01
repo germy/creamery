@@ -1,0 +1,36 @@
+<div id="shift_job_list">
+  <% if @shift_jobs.count > 0 then %>
+    <h4>Jobs for This Shift</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <% if can? :update, ShiftJob %>
+            <th>Edit</th>
+          <% end %>
+          <% if can? :destroy, ShiftJob %>
+            <td>Delete</th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shift_jobs.each do |s| %>
+          <tr>
+            <td><%= link_to s.job.name, job_path(s.job) %></td>
+            <td><%= s.job.description %></td>       
+            <% if can? :update, ShiftJob %>                  
+              <td><%= link_to 'Edit', edit_shift_job_path(s) %></td>
+            <% end %>
+            <% if can? :destroy, ShiftJob %> 
+              <td><%= link_to 'Destroy', shift_job_path(s), :method => :delete, remote: true %></td>         
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <%= will_paginate @shift_jobs, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next", :param_name => "shift_jobs_page" %>
+  <% else %>
+    <h4>No Jobs Currently Assigned to this Shift</h4>
+  <% end %>
+</div>

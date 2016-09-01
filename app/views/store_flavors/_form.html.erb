@@ -1,0 +1,11 @@
+<%= simple_form_for(@store_flavor) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.select :store_id, options_from_collection_for_select(Store.active, :id, :name), include_blank: true, error: "A store must be specified", :label => "Store" %>
+    <%= f.select :flavor_id, options_from_collection_for_select(Flavor.active, :id, :name), include_blank: true, error: "A flavor must be specified", :label => "Flavor" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

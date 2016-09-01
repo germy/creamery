@@ -1,0 +1,36 @@
+<fieldset>
+  <legend><h3>Shift for <%= @shift.assignment.employee.proper_name %></h3></legend>
+  <p>
+    <strong>Shift ID:</strong>
+    <%= @shift.id %>
+  </p>
+  <p>
+    <strong>Assignment ID:</strong>
+    <%= link_to @shift.assignment_id, assignment_path(@shift.assignment) %>
+  </p>
+
+  <p>
+    <strong>Store:</strong>
+    <%= link_to @shift.assignment.store.name, store_path(@shift.assignment.store) %>
+  </p>  
+
+  <p>
+    <strong>Date:</strong>
+    <%= @shift.date.strftime("%m/%d/%y") %>
+  </p>
+
+  <p>
+    <strong>Start time:</strong>
+    <%= (@shift.start_time).strftime("%I:%M %p") %>
+  </p>
+
+  <p>
+    <strong>End time:</strong>
+    <%= (@shift.end_time).strftime("%I:%M %p") %>
+  </p>
+
+  <p>
+    <strong>Notes:</strong>
+    <%= @shift.notes %>
+  </p>
+</fieldset>

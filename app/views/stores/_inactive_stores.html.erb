@@ -1,0 +1,14 @@
+<% if can? :read_inactive, Store %>
+  <% unless @inactive_stores.empty? %>
+    <fieldset>
+      <legend><h3>Inactive Stores</h3></legend>
+      <ul>
+        <% @inactive_stores.each do |store| %>
+          <li><%= link_to store.name, store_path(store) %></li>
+        <% end %>
+      </ul>
+    </fieldset>
+  <% else %>
+      <h3>No Inactive Stores to Display</h3>
+  <% end %>
+<% end %>

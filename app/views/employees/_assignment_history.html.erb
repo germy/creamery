@@ -1,0 +1,51 @@
+<div id="assignment_from_employee_list">
+  <% if @assignments.count > 0 then %>
+    <h3>Assignment History</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Store</th>
+          <th class="centered">Start Date</th>
+          <th class="centered">End Date</th>
+          <th class="centered">Pay Level</th>
+          <th></th>
+          <% if can? :update, Assignment %>
+            <th></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @assignments.each do |assignment| %>
+          <% if can? :read, assignment %>
+            <tr>
+              <td><%= link_to assignment.store.name, store_path(assignment.store) %></td>
+              <td>
+                <%= assignment.start_date.strftime("%m/%d/%y") %>         
+              </td>
+              <td class="centered">
+                <% if assignment.end_date.nil? %>
+                  <% if can? :update, Assignment %>   
+                    &nbsp;&nbsp;&nbsp;
+                    <%= link_to 'End', assignment, method: :end_assignment, remote: true%>
+                  <% else %> 
+                    --
+                  <% end %>                  
+                <% else %>
+                  <%= assignment.end_date.strftime("%m/%d/%y") %>
+                <% end %>    
+              </td>          
+              <td class="centered"><%= assignment.pay_level %></td>
+              <td><%= link_to 'View Details', assignment_path(assignment) %></td>
+              <% if can? :update, Assignment %>
+                <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>        
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @assignments, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next", :param_name => "assignments_page" %>
+  <% else %>
+    <h3>No Associated Assignments</h3>
+  <% end %>
+</div>  

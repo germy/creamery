@@ -1,0 +1,36 @@
+<div id="jobs_list">
+  <fieldset>
+    <legend><h3>Jobs</h3></legend>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Active</th>
+          <th></th>        
+          <% if can? :update, Job %>        
+            <th></th>
+          <% end %>
+          <% if can? :destoy, Job %>        
+            <th></th>
+          <% end %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @jobs.each do |job| %>
+          <tr>
+            <td><%= job.name %></td>
+            <td><%= job.active.to_s.capitalize %></td>
+            <td><%= link_to 'View Details', job_path(job) %></td>
+            <% if can? :update, Job %>
+              <td><%= link_to 'Edit', edit_job_path(job) %></td>
+            <% end %>
+            <% if can? :destroy, Job %>
+              <td><%= link_to 'Deactivate', job, method: :delete %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </fieldset>
+</div>

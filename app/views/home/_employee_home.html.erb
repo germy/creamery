@@ -1,0 +1,17 @@
+<h2>Welcome <%= current_user.employee.proper_name %></h2>
+<br />
+
+<div class="row">
+  <div class="small-6 columns">
+    <%= render :partial => 'assignments/current_assignments' %>   
+    <%= link_to store_path(@assignment.store) do %>
+      <span class="button">View Assignments for <%= @assignment.store.name %></span>
+    <% end %>
+  </div>  
+  <div class="small-6 columns">
+    <%= render :partial => 'shifts/incomplete_shift_list' %>        
+    <%= link_to shifts_path do %>
+      <span class="button">View Incomplete Shifts</span>
+    <% end %>   
+  </div>  
+</div>    

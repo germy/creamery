@@ -1,0 +1,43 @@
+<% if @current_assignments.select{ |a| can? :read, a }.length > 0 %>
+  <div id="assignment_list">
+    <% if @current_assignments.count > 0 then %>
+      <h4>Current Employees at <%= @store.name.split.map(&:capitalize).join(' ') %></h4>  
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th class="centered">Pay Level</th>
+                <th>Start Date</th>
+                <th></th>           
+                <% if can? :update, Assignment %>               
+                  <td>End Assignment</th>
+                <% end %>
+                <% if can? :destroy, Assignment %>               
+                  <th></th> 
+                <% end %>
+              </tr>
+            </thead>
+            <tbody>
+              <% @current_assignments.each do |assignment| %>
+                <tr>
+                  <td><%= link_to assignment.employee.name, employee_path(assignment.employee) %></td>
+                  <td class="centered"><%= assignment.pay_level %></td> 
+                  <td><%= assignment.start_date.strftime("%m/%d/%y") %></td>
+                  <td><%= link_to 'View Details', assignment_path(assignment) %></td>                  
+                  <% if can? :update, Assignment %>            
+                    <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>               
+                  <% end %>
+                  <% if can? :destroy, Assignment %>
+                    <td><%= link_to 'End Now', assignment_path(assignment), :method => :delete, remote: true %></td>   
+                  <% end %>     
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= will_paginate @current_assignments, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" , :param_name => 'current_assignments_page' %>
+        <% else %>
+          <h4>No Current Employees at <%= @store.name.capitalize %></h4>
+        <% end %>
+      </div>
+    <% end %>
+

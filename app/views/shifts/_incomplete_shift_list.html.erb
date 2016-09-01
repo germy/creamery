@@ -1,0 +1,47 @@
+<fieldset>
+  <legend><h3>Incomplete Shifts</h3></legend>
+  <table>
+    <thead>
+      <tr>
+        <th>Employee</th>
+        <th>Phone</th>
+        <th>Assignment</th>
+        <th>Date</th>
+        <th>Start time</th>
+        <th>End time</th>
+        <% if can? :read, Shift %>
+          <th></th>
+        <% end %>
+        <% if can? :update, Shift %>
+          <th></th>
+        <% end %>
+        <% if can? :destroy, Shift %>
+          <th></th>
+        <% end %>   
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @incomplete_shifts.each do |shift| %>
+        <tr>
+          <td><%= link_to shift.assignment.employee.proper_name, employee_path(shift.assignment.employee_id) %></td>
+          <td><a href="tel:<%= number_to_phone shift.assignment.employee.phone %>"><%= number_to_phone shift.assignment.employee.phone %></a></td>        
+          <td><%= link_to shift.assignment_id, assignment_path(shift.assignment) %></td>
+          <td><%= shift.date.strftime("%m/%d/%y") %></td>
+          <td><%= shift.start_time.strftime("%I:%M %p") %></td>
+          <td><%= shift.end_time.strftime("%I:%M %p") %></td>
+          <% if can? :read, shift %>
+            <td><%= link_to 'Add Job', shift %></td>
+          <% end %>
+          <% if can? :update, shift %>
+            <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
+          <% end %>
+          <% if can? :destroy, shift %>
+            <td><%= link_to 'Destroy', shift, method: :delete %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @incomplete_shifts, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next", :param_name => "incomplete_shifts_page" %>
+</fieldset>

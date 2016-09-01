@@ -1,0 +1,33 @@
+<h2>Welcome <%= current_user.employee.proper_name %></h2>
+<br />
+
+<div class="row">
+	<div class="small-12 columns">
+		<%= render :partial => 'shifts/today_shift_list' %>					
+	</div>	
+</div>
+<div class="row">
+	<div class="small-12 columns">
+		<%= render :partial => 'shifts/incomplete_shift_list' %>				
+		<%= link_to shifts_path do %>
+			<span class="button">View Incomplete Shifts</span>
+		<% end %>		
+	</div>	
+</div>		
+
+
+<div class="row">
+	<div class="small-6 columns">
+		<%= render :partial => 'assignments/assignment_details' %>				
+		<%= link_to assignment_path(@assignment) do %>
+			<span class="button">View Current Assignment</span>
+		<% end %>		
+	</div>	
+	<div class="small-6 columns">
+		<%= render :partial => 'shifts/shift_list' %>				
+		<%= link_to assignment_path(@assignment) do %>
+			<span class="button">View Current Assignment Shifts</span>
+		<% end %>		
+	</div>	
+</div>		
+

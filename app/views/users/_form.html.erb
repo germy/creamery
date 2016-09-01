@@ -1,0 +1,14 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.select :employee_id, options_from_collection_for_select(Employee.active, :id, :name), include_blank: true, error: "An employee association must be specificed" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'button radius' %>
+    <%= link_to 'Cancel', home_path, :class => 'button alert radius' %>
+  </div>
+<% end %>

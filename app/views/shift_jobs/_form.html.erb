@@ -1,0 +1,14 @@
+<%= simple_form_for(@shift_job) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">  
+    <%= f.label :shift_id %>
+    <%= f.select :shift_id, options_from_collection_for_select(Shift.all, :id, :id), include_blank: true, error: "A shift must be specified" %>
+    <%= f.label :job_id %>    
+    <%= f.select :job_id, options_from_collection_for_select(Job.all, :id, :name), :label => "Job" , include_blank: true, error: "A job must be specified"%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

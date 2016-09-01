@@ -1,0 +1,24 @@
+<h1>Listing Store Flavors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Store</th>
+      <th>Flavor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @store_flavors.each do |store_flavor| %>
+      <tr>
+        <td><%= store_flavor.store_id %></td>
+        <td><%= store_flavor.flavor_id %></td>
+        <td><%= link_to 'Show', store_flavor %></td>
+        <td><%= link_to 'Edit', edit_store_flavor_path(store_flavor) %></td>
+        <td><%= link_to 'Destroy', store_flavor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

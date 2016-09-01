@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  store_id: 1
+  employee_id: 1
+  start_date: 2016-01-29
+  end_date: 2016-01-29
+  pay_level: 1
+
+two:
+  store_id: 1
+  employee_id: 1
+  start_date: 2016-01-29
+  end_date: 2016-01-29
+  pay_level: 1

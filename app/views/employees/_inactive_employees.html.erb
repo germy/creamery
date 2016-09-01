@@ -1,0 +1,14 @@
+<% if can? :read_inactive_employee, Employee %>
+  <% unless @inactive_employees.empty? %>
+    <div class="panel callout radius">
+      <h3>Inactive Employees</h3>
+      <ul>
+        <% @inactive_employees.each do |employee| %>
+          <li><%= link_to employee.name, employee_path(employee) %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% else %>
+    <h3>No Inactive Employees</h3>
+  <% end %>
+<% end %>

@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="small-7 columns">
+    <%= render partial: "shift_details" %>
+  </div>
+  <div class="small-5 columns">  
+    <%= render partial: "shift_job_list"%>
+    <% if can? :create, ShiftJob %>
+      <%= link_to(new_shift_job_path(shift_id: @shift.id), class: 'button small radius', id: 'new_shift_job_link', remote: true) do %>
+        New Job Association
+      <% end %>    
+    <% end %>
+  </div>
+
+</div>
+
+<!-- Add buttons to list all, edit project or destroy object -->
+<%= render partial: "partials/object_options", locals: {model_name: "shift", object: @shift}  %>
+

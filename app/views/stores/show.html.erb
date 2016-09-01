@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="small-7 columns">
+    <%= render partial: "store_details" %>
+  </div>
+  <div class="small-5 columns">
+    <%= render partial: "list_flavors" %>
+    <% if can? :create, @flavors.first and @store.active %>
+      <%= link_to(new_store_flavor_path(store_id: @store.id), class: 'button small radius', id: 'new_store_flavor_link', remote: true) do %>
+        Assign New Flavor
+      <% end %>
+    <% end %>
+  </div>
+
+    <div class="small-5 columns">  
+      <%= render partial: "assigned_employees"%>
+      <% if can? :create, Assignment and @store.active %>      
+        <%= link_to(new_assignment_path(store_id: @store.id), class: 'button small radius', id: 'new_assignment_link', remote: true) do %>
+          New Employee Assignment
+        <% end %>    
+      <% end %>
+    </div>
+
+
+</div>
+
+<!-- Add buttons to list all, edit project or destroy object -->
+<%= render partial: "partials/object_options", locals: {model_name: "store", object: @store}  %>

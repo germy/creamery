@@ -1,0 +1,15 @@
+<%= simple_form_for(@shift) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :assignment_id %>
+    <%= f.text_field :date, :id => "shiftdatepicker", label: 'Date', :value => Date.strptime(@shift.date.to_s, "%Y-%m-%d").to_date.strftime("%m/%d/%Y") %>
+    <%= f.input :start_time, :ampm => true, :label => "Start Time" %>
+    <%= f.input :end_time, :default => 3.hours.from_now, :ampm => true, :label => "Start Time"  %>
+    <%= f.input :notes %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

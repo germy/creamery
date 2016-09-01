@@ -1,0 +1,54 @@
+<% if assignments.empty? %>
+  <h3>There are no <%= state %> assignments at this time.</h3>
+<% else %>
+  <fieldset>
+  <legend><h3><%= state.capitalize %> Assignments</h3></legend>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Store</th>
+        <th>Employee</th>
+        <th class="centered">Pay</th>
+        <th>Start Date</th>
+        <% if state == 'past' %>
+          <th>End Date</th>
+        <% end %>
+        <% if can? :read, assignments.first %>
+          <th>&nbsp;</th>
+        <% end %>        
+        <% if can? :edit, assignments.first %>
+          <th>&nbsp;</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% assignments.each do |assignment| %>
+        <tr>
+          <td><%= link_to assignment.store.name, store_path(assignment.store) %></td>
+          <td><%= link_to assignment.employee.name, employee_path(assignment.employee) %></td>
+          <td class="centered"><%= assignment.pay_level %></td>
+          <td><%= assignment.start_date.strftime("%m/%d/%y") %></td>
+          <% if state == 'past' %>
+            <td><%= assignment.end_date.strftime("%m/%d/%y") %></td>
+          <% end %>
+          <% if can? :read, assignment %>          
+            <td>
+              <%= link_to assignment_path(assignment) do %>
+                &nbsp;View Details&nbsp;
+              <% end %>
+            </td>
+          <% end %>          
+          <% if can? :edit, @assignment %>          
+            <td>
+              <%= link_to edit_assignment_path(assignment) do %>
+                &nbsp;Edit&nbsp;
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate assignments, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", :param_name => page_name %>  
+  </fieldset>
+<% end %>
