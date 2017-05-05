@@ -18,8 +18,8 @@
 //= require jquery_nested_form
 //= require foundation-datetimepicker
 
-$(function() {
-  $(document).foundation('topbar', 'reflow');
+$(document).on('ready page:load', function () {
+  $(function(){ $(document).foundation('topbar', 'reflow'); });
 });
 
 $(function(){
