@@ -7,10 +7,10 @@ namespace :db do
     require 'faker'
     
     # Step 0: drop old databases and rebuild
-    Rake::Task['db:drop'].invoke
-    Rake::Task['db:create'].invoke
-    Rake::Task['db:migrate'].invoke
-    Rake::Task['db:test:prepare'].invoke
+    # Rake::Task['db:drop'].invoke
+    # Rake::Task['db:create'].invoke
+    # Rake::Task['db:migrate'].invoke
+    # Rake::Task['db:test:prepare'].invoke
     
     # Step 1a: Add Alex as admin and user
     ae = Employee.new
