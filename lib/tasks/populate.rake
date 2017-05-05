@@ -5,7 +5,6 @@ namespace :db do
   task :populate => :environment do
     # Docs at: http://faker.rubyforge.org/rdoc/
     require 'faker'
-    require 'factory_girl_rails'
     
     # Step 0: drop old databases and rebuild
     Rake::Task['db:drop'].invoke
