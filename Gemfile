@@ -79,3 +79,7 @@ group :test do
   gem 'single_test'
 end
 
+group :production do
+  gem 'pg'
+end
+
