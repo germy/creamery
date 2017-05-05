@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation.min
+//= require foundation
 //= require foundation/foundation.abide
 //= require_tree .
 //= require jquery_nested_form
