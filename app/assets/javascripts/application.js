@@ -12,14 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require foundation/foundation
 //= require_tree .
 //= require jquery_nested_form
 //= require foundation-datetimepicker
 
-$(document).on('ready page:load', function () {
-  $(function(){ $(document).foundation('topbar', 'reflow'); });
-});
+$(function(){ $(document).foundation(); });
 
 $(function(){
   $('#employeedatepicker').fdatetimepicker({
@@ -50,3 +48,5 @@ $(function(){
       format: 'mm/dd/yyyy'
   });
 });
+
+

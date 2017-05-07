@@ -1,0 +1,157 @@
+/* line 2, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.simple_form div.input {
+  margin-bottom: 10px;
+  clear: both;
+  /* Required for Webkit, but not for Gecko */
+}
+/* line 7, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.simple_form label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  margin: 2px 5px;
+}
+
+/* line 15, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+div.boolean, .simple_form input[type='submit'] {
+  margin-left: 120px;
+}
+
+/* line 19, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+div.boolean label {
+  float: none;
+  margin: 0;
+}
+
+/* line 24, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+label.collection_radio_buttons {
+  float: none;
+  margin: 0;
+  margin-right: 10px;
+  vertical-align: -2px;
+  margin-left: 2px;
+}
+
+/* line 32, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.field_with_errors {
+  background-color: #ff3333;
+}
+
+/* line 37, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.simple_form .error {
+  clear: left;
+  color: black;
+  display: block;
+  margin-left: 120px;
+}
+/* line 43, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.simple_form .hint {
+  clear: left;
+  margin-left: 120px;
+  color: #555;
+  display: block;
+  font-style: italic;
+}
+
+/* line 53, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+input.radio {
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+/* line 57, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+input.check_boxes {
+  margin-left: 3px;
+  vertical-align: -3px;
+}
+
+/* line 63, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+input.tasks {
+  width: 280px;
+}
+
+/* line 66, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+input.avg {
+  width: 380px;
+}
+
+/* line 69, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+select.avg {
+  width: 380px;
+}
+
+/* line 72, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+textarea.avg {
+  width: 380px;
+  height: 100px;
+}
+
+/* line 78, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+label.collection_check_boxes {
+  float: none;
+  margin: 0;
+  vertical-align: -2px;
+  margin-left: 2px;
+}
+
+/* Cutting back the spacing on simple_form... */
+/* line 86, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.form-horizontal .control-label {
+  float: left;
+  padding-top: 3px;
+  text-align: right;
+  width: 80px;
+  font-size: 90%;
+}
+
+/* line 93, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.form-horizontal .controls {
+  margin-left: 90px;
+  /*width: 350px;*/
+}
+
+/* line 98, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.form-horizontal .control-label .avg {
+  float: left;
+  padding-top: 3px;
+  text-align: left;
+  width: 10px;
+  font-size: 90%;
+}
+
+/* line 106, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.form-horizontal .min_task .control-label {
+  float: left;
+  padding-top: 3px;
+  text-align: right;
+  width: 60px;
+  font-size: 90%;
+}
+
+/* line 113, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.form-horizontal .min_task .controls {
+  margin-left: 70px;
+  width: 200px;
+}
+
+/* line 118, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.form-actions {
+  background-color: #FFF;
+}
+
+/* line 122, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+.form-actions-min {
+  background-color: #FFF;
+  border: none;
+  padding: 10px 10px 10px 180px;
+  /*padding-left: 180px;*/
+}
+
+/* line 129, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+select.date {
+  width: 90px;
+}
+
+/* line 130, /Users/Armor/Documents/creamery/app/assets/stylesheets/simple_form.scss */
+select.time {
+  width: 90px;
+}
